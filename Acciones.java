@@ -8,8 +8,7 @@ public class Acciones {
     public static void main(String[] args) {
 
         System.out.println("---BIENVENIDO AL SISTEMA---");
-        System.out.println(
-                "¿Que desea hacer? \n1.Sumar filas. \n2.Sumar columnas. \n3.Multiplicar matrices. \nCualquer num para salir.");
+        System.out.println("¿Que desea hacer? \n1.Sumar filas. \n2.Sumar columnas. \n3.Multiplicar matrices. \nCualquer num para salir.");
         int opt = tc.nextInt();
         int fil = acciones.dim();
         int col = acciones.dim();
@@ -55,6 +54,8 @@ public class Acciones {
                     ban--;
                 }
 
+                System.out.println(pilamulti);
+
                 break;
             default:
                 break;
@@ -75,7 +76,7 @@ public class Acciones {
 
         for (int i = 0; i < fil; i++) {
             for (int j = 0; j < col; j++) {
-                matriz[i][j] = (int) (Math.random() * 10 + 1);
+                matriz[i][j] = (int) (Math.random() * 100 + 1);
                 System.out.print("[" + matriz[i][j] + "]");
             }
             System.out.println();
@@ -94,7 +95,7 @@ public class Acciones {
             for (int j = 0; j < matriz[0].length; j++) {
                 sum = sum + matriz[i][j];
             }
-            pila.add(sum / matriz[0].length);
+            pila.push(sum / matriz[0].length);
             sum = 0;
         }
 
@@ -116,7 +117,7 @@ public class Acciones {
             for (int j = 0; j < matriz.length; j++) {
                 sum = sum + matriz[j][i];
             }
-            pila.add(Math.pow(sum, 1.0 / 2.0));
+            pila.push(Math.pow(sum, 1.0 / 2.0));
             sum = 0;
         }
 

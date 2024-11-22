@@ -12,7 +12,8 @@ public class Acciones {
     public void menu() {
 
         System.out.println("---BIENVENIDO AL SISTEMA---");
-        System.out.println("¿Que desea hacer? \n1.Sumar filas. \n2.Sumar columnas. \n3.Multiplicar matrices. \nCualquer num para salir.");
+        System.out.println(
+                "¿Que desea hacer? \n1.Sumar filas. \n2.Sumar columnas. \n3.Multiplicar matrices. \nCualquer num para salir.");
         int opt = tc.nextInt();
         int fil = acciones.dim();
         int col = acciones.dim();
@@ -23,42 +24,19 @@ public class Acciones {
 
                 Stack<Double> pila = acciones.sumaFila(matrizA);
 
-                int cont = pila.size();
-
-                for (int i = 0; i < cont; i++) {
-                    System.out.println("El promedio de la fila #" + (i + 1) + ": " + pila.peek());
-                    pila.pop();
-                }
+                acciones.mostrarFila(pila);
                 break;
             case 2:
                 Stack<Double> pila2 = acciones.sumaColum(matrizA);
 
-                int conta = pila2.size();
-
-                for (int i = 0; i < conta; i++) {
-                    System.out.println("La raiz de la columna #" + (i + 1) + ": " + pila2.peek());
-                    pila2.pop();
-                }
+                acciones.mostrarColumna(pila2);
                 break;
             case 3:
                 int[][] matrizB = acciones.crearMatriz(fil, col);
 
                 Stack<Integer> pilamulti = acciones.multiMatrices(matrizA, matrizB);
 
-                int num = pilamulti.size();
-                int ban = num;
-
-                System.out.println("El producto de cada uno de los " + num
-                        + " numeros que hay en la \nmatriz A con su correspondiente en la matriz B es");
-
-                for (int i = 0; i < num; i++) {
-                    System.out.println("La multiplicación del valor #" + (ban) + " es: " + pilamulti.peek());
-                    System.out.println("-----------------------------------------------");
-                    pilamulti.pop();
-                    ban--;
-                }
-
-                System.out.println(pilamulti);
+                acciones.mostrarMulti(pilamulti);
 
                 break;
             default:
@@ -67,6 +45,40 @@ public class Acciones {
 
         System.out.println("---GRACIAS POR USAR NUESTRO SISTEMA---\n\t\t:)");
 
+    }
+
+    public void mostrarMulti(Stack<Integer> pilamulti) {
+        int num = pilamulti.size();
+        int ban = num;
+
+        System.out.println("El producto de cada uno de los " + num
+                + " numeros que hay en la \nmatriz A con su correspondiente en la matriz B es");
+
+        for (int i = 0; i < num; i++) {
+            System.out.println("La multiplicación del valor #" + (ban) + " es: " + pilamulti.peek());
+            System.out.println("-----------------------------------------------");
+            pilamulti.pop();
+            ban--;
+        }
+        System.out.println(pilamulti);
+    }
+
+    public void mostrarFila(Stack<Double> pila) {
+        int cont = pila.size();
+
+        for (int i = 0; i < cont; i++) {
+            System.out.println("El promedio de la fila #" + (i + 1) + ": " + pila.peek());
+            pila.pop();
+        }
+    }
+
+    public void mostrarColumna(Stack<Double> pila2) {
+        int conta = pila2.size();
+
+        for (int i = 0; i < conta; i++) {
+            System.out.println("La raiz de la columna #" + (i + 1) + ": " + pila2.peek());
+            pila2.pop();
+        }
     }
 
     public int dim() {

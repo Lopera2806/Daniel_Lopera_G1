@@ -6,6 +6,10 @@ public class Acciones {
     public static Acciones acciones = new Acciones();
 
     public static void main(String[] args) {
+        acciones.menu();
+    }
+
+    public void menu() {
 
         System.out.println("---BIENVENIDO AL SISTEMA---");
         System.out.println("¿Que desea hacer? \n1.Sumar filas. \n2.Sumar columnas. \n3.Multiplicar matrices. \nCualquer num para salir.");
